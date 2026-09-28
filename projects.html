@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Projects — Osye</title>
+
+    <style>
+
+        :root {
+            --background: #ececea;
+            --black: #171717;
+            --gray: #686866;
+            --light-gray: #aaa9a5;
+            --border: #c9c8c4;
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+
+            background: var(--background);
+            color: var(--black);
+        }
+
+
+        body {
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+        }
+
+
+        /* =========================================
+           PAGE
+           ========================================= */
+
+        .page {
+            width: min(760px, 90%);
+            margin: 0 auto;
+
+            padding:
+                40px
+                0
+                120px;
+        }
+
+
+        /* =========================================
+           TOP
+           ========================================= */
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .back {
+            color: var(--gray);
+
+            text-decoration: none;
+
+            font-size: 11px;
+            letter-spacing: 0.08em;
+
+            transition:
+                color 150ms ease;
+        }
+
+
+        .back:hover {
+            color: var(--black);
+        }
+
+
+        .socials {
+            display: flex;
+
+            gap: 12px;
+
+            font-size: 10px;
+            letter-spacing: 0.08em;
+        }
+
+
+        .socials a {
+            color: var(--gray);
+
+            text-decoration: none;
+
+            transition:
+                color 150ms ease;
+        }
+
+
+        .socials a:hover {
+            color: var(--black);
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        h1 {
+            margin-top: 105px;
+            margin-bottom: 34px;
+
+            font-size: 16px;
+            font-weight: 500;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .intro {
+            max-width: 650px;
+
+            margin-bottom: 80px;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            color: #4f4f4d;
+
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        .intro p {
+            margin:
+                0
+                0
+                22px;
+        }
+
+
+        /* =========================================
+           PROJECT
+           ========================================= */
+
+        .project {
+            position: relative;
+
+            padding:
+                38px
+                0
+                48px;
+
+            border-top:
+                1px solid
+                var(--border);
+        }
+
+
+        .project-number {
+            margin-bottom: 13px;
+
+            color: var(--light-gray);
+
+            font-size: 10px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        .project h2 {
+            margin:
+                0
+                0
+                25px;
+
+            color: var(--black);
+
+            font-size: 14px;
+            font-weight: 500;
+
+            letter-spacing: 0.07em;
+        }
+
+
+        .description {
+            max-width: 680px;
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            color: #555553;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        .description p {
+            margin:
+                0
+                0
+                20px;
+        }
+
+
+        /* =========================================
+           PROJECT LINKS
+           ========================================= */
+
+        .project-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-top: 28px;
+        }
+
+
+        .project-links a {
+            color: var(--gray);
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 0.08em;
+
+            transition:
+                color 150ms ease,
+                transform 150ms ease;
+        }
+
+
+        .project-links a:hover {
+            color: var(--black);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================================
+           STATUS
+           ========================================= */
+
+        .status {
+            display: inline-block;
+
+            margin-top: 5px;
+
+            color: var(--light-gray);
+
+            font-size: 9px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+
+        footer {
+            padding-top: 45px;
+
+            border-top:
+                1px solid
+                var(--border);
+
+            color: var(--light-gray);
+
+            font-size: 9px;
+
+            letter-spacing: 0.1em;
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                width: 88%;
+
+                padding-top: 28px;
+            }
+
+
+            h1 {
+                margin-top: 75px;
+            }
+
+
+            .intro {
+                margin-bottom: 60px;
+
+                font-size: 15px;
+            }
+
+
+            .project {
+                padding:
+                    32px
+                    0
+                    40px;
+            }
+
+
+            .description {
+                font-size: 14px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =========================================
+         TOP
+         ========================================= -->
+
+    <div class="top">
+
+        <a
+            class="back"
+            href="index.html"
+        >
+            [ ← OSYE ]
+        </a>
+
+
+        <div class="socials">
+
+            <a
+                href="https://github.com/Osyeyy"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GH ]
+            </a>
+
+
+            <a
+                href="https://huggingface.co/Osye"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ HF ]
+            </a>
+
+
+            <!--
+                PODMIEŃ LINK JEŚLI TWÓJ X
+                MA INNY ADRES
+            -->
+
+            <a
+                href="https://x.com/osyeyy"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ X ]
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         INTRO
+         ========================================= -->
+
+    <h1>
+        [ MY PROJECTS ]
+    </h1>
+
+
+    <div class="intro">
+
+        <p>
+            I mostly build experiments around one question:
+            what actually happens inside a model when we train,
+            damage, restore or transfer its capabilities?
+        </p>
+
+        <p>
+            Not everything here worked.
+            Some experiments produced useful results,
+            some produced negative ones.
+            I keep both.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================================
+         01 / MLP SURGERY
+         ========================================= -->
+
+    <section class="project">
+
+        <div class="project-number">
+            01 / EXPERIMENT
+        </div>
+
+
+        <h2>
+            MLP SURGERY
+        </h2>
+
+
+        <div class="description">
+
+            <p>
+                An experiment in recovering reasoning capabilities
+                lost during fine-tuning.
+            </p>
+
+            <p>
+                After observing that conversational fine-tuning
+                could degrade mathematical and general reasoning,
+                I tested whether the damage could be localized
+                to particular MLP layers rather than treated as
+                a change to the entire model.
+            </p>
+
+            <p>
+                I used gradient-norm scoring to identify layers
+                associated with errors, restored selected MLP
+                weights from the original Qwen2.5-3B checkpoint,
+                and evaluated the resulting models on GSM8K
+                and ARC Challenge.
+            </p>
+
+            <p>
+                Restoring the top identified layers recovered
+                much of the lost capability, with the strongest
+                configuration reaching approximately the base
+                model's ARC performance while slightly exceeding
+                it on GSM8K.
+            </p>
+
+        </div>
+
+
+        <div class="project-links">
+
+            <a
+                href="https://github.com/Osyeyy/mlp-surgery"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GITHUB ]
+            </a>
+
+            <a
+                href="https://huggingface.co/Osye"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ MODELS ]
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         02 / SURGICAL DISTILL
+         ========================================= -->
+
+    <section class="project">
+
+        <div class="project-number">
+            02 / EXPERIMENT
+        </div>
+
+
+        <h2>
+            SURGICAL DISTILL
+        </h2>
+
+
+        <div class="description">
+
+            <p>
+                An attempt to make knowledge distillation
+                more selective.
+            </p>
+
+            <p>
+                Instead of asking a smaller student model
+                to imitate its teacher uniformly, I compared
+                hidden states between teacher and student
+                layers and tried to concentrate the training
+                signal where their internal representations
+                diverged the most.
+            </p>
+
+            <p>
+                The first version catastrophically damaged
+                the model. After protecting the final layers
+                and adding an output-level KL anchor,
+                the model recovered.
+            </p>
+
+            <p>
+                The localized method, however, still failed
+                to outperform ordinary KL distillation.
+                The result is negative — and I decided to
+                keep it that way.
+            </p>
+
+        </div>
+
+
+        <div class="project-links">
+
+            <a
+                href="https://github.com/Osyeyy/surgical-distill"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GITHUB ]
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         03 / LAYER VISION
+         ========================================= -->
+
+    <section class="project">
+
+        <div class="project-number">
+            03 / TOOL + EXPERIMENT
+        </div>
+
+
+        <h2>
+            LAYER VISION
+        </h2>
+
+
+        <div class="description">
+
+            <p>
+                A tool for making internal MLP activity
+                visible during language-model inference.
+            </p>
+
+            <p>
+                Given a prompt, Layer Vision captures
+                MLP activations across transformer layers
+                and shows which parts of the network respond
+                most strongly.
+            </p>
+
+            <p>
+                The current version uses PyTorch forward hooks,
+                allowing activations to be observed without
+                modifying the model itself.
+            </p>
+
+            <p>
+                The project grew directly out of MLP Surgery.
+                While measuring gradients and looking for damaged
+                layers, I became interested in seeing how different
+                prompts move through the model in the first place.
+            </p>
+
+            <p>
+                The long-term idea is to move from static
+                layer measurements toward token-by-token
+                visualization of activity inside the network.
+            </p>
+
+        </div>
+
+
+        <div class="project-links">
+
+            <a
+                href="https://github.com/Osyeyy/layer-vision"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GITHUB ]
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         04 / PERPLEXITY SELECTIVE FINETUNING
+         ========================================= -->
+
+    <section class="project">
+
+        <div class="project-number">
+            04 / EXPERIMENT
+        </div>
+
+
+        <h2>
+            PERPLEXITY-WEIGHTED SELECTIVE FINETUNING
+        </h2>
+
+
+        <div class="description">
+
+            <p>
+                An earlier experiment in dataset selection
+                for language-model fine-tuning.
+            </p>
+
+            <p>
+                I scored OpenHermes samples using cross-entropy
+                loss from a pretrained Qwen2.5-3B model and
+                selected the highest-perplexity portion of
+                the dataset.
+            </p>
+
+            <p>
+                The idea was simple: instead of spending compute
+                on examples the model already understands,
+                concentrate training on examples it finds difficult.
+            </p>
+
+            <p>
+                It didn't work.
+            </p>
+
+            <p>
+                After correcting an evaluation inconsistency,
+                perplexity-filtered fine-tuning performed worse
+                than the base model on both GSM8K and ARC Challenge.
+            </p>
+
+            <p>
+                That failure became useful. It exposed capability
+                degradation during fine-tuning and eventually
+                contributed to the idea behind MLP Surgery.
+            </p>
+
+        </div>
+
+
+        <div class="project-links">
+
+            <a
+                href="https://github.com/Osyeyy/Perplexity-weighted-selective-finetuning"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GITHUB ]
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         05 / CONCLAVE
+         ========================================= -->
+
+    <section class="project">
+
+        <div class="project-number">
+            05 / IN DEVELOPMENT
+        </div>
+
+
+        <h2>
+            CONCLAVE
+        </h2>
+
+
+        <span class="status">
+            [ ACTIVE / EXPERIMENTAL ]
+        </span>
+
+
+        <div class="description">
+
+            <p>
+                An ongoing experiment in model specialization.
+            </p>
+
+            <p>
+                Starting from Qwen3-4B-Instruct, the project
+                explores separate specialized directions for
+                mathematics, physics, chemistry, biology and code.
+            </p>
+
+            <p>
+                Still in development.
+            </p>
+
+        </div>
+
+
+        <div class="project-links">
+
+            <a
+                href="https://github.com/Osyeyy/Conclave"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GITHUB ]
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         06 / PYTHON DAILY ADVENTURE
+         ========================================= -->
+
+    <section class="project">
+
+        <div class="project-number">
+            06 / LEARNING
+        </div>
+
+
+        <h2>
+            PYTHON DAILY ADVENTURE
+        </h2>
+
+
+        <div class="description">
+
+            <p>
+                Nothing clever here.
+            </p>
+
+            <p>
+                Just Python.
+            </p>
+
+            <p>
+                A collection of small notebooks and exercises
+                covering functions, classes, exceptions, files,
+                data structures and other fundamentals.
+            </p>
+
+            <p>
+                I keep it public because not everything
+                has to pretend to be research.
+            </p>
+
+        </div>
+
+
+        <div class="project-links">
+
+            <a
+                href="https://github.com/Osyeyy/python-daily-adventure"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ GITHUB ]
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer>
+        OSYE / PROJECTS
+    </footer>
+
+
+</div>
+
+
+</body>
+
+</html>

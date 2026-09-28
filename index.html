@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Osye</title>
+
+    <style>
+
+        :root {
+            --background: #ececea;
+            --black: #171717;
+            --gray: #686866;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            min-height: 100%;
+            background: var(--background);
+            color: var(--black);
+        }
+
+        body {
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                monospace;
+        }
+
+
+        /* =========================================
+           PAGE
+           ========================================= */
+
+        .page {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            padding:
+                24px
+                28px
+                22px;
+
+            position: relative;
+        }
+
+
+        /* =========================================
+           HEADER
+           ========================================= */
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            color: var(--gray);
+
+            font-size: 11px;
+            letter-spacing: 0.17em;
+        }
+
+        .logo {
+            font-family:
+                Arial,
+                sans-serif;
+
+            color: var(--black);
+
+            font-size: 18px;
+            font-weight: 500;
+
+            letter-spacing: -0.04em;
+        }
+
+
+        /* =========================================
+           SOCIAL LINKS
+           LEFT / VERTICAL
+           ========================================= */
+
+        .socials {
+            position: fixed;
+
+            left: 28px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: flex-start;
+
+            gap: 13px;
+
+            z-index: 10;
+        }
+
+        .socials a {
+            color: var(--gray);
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 0.08em;
+
+            transition:
+                color 150ms ease,
+                transform 150ms ease;
+        }
+
+        .socials a:hover {
+            color: var(--black);
+
+            transform: translateX(2px);
+        }
+
+
+        /* =========================================
+           MAIN
+           ========================================= */
+
+        main {
+            flex: 1;
+
+            display: grid;
+            place-items: center;
+
+            min-height: 570px;
+        }
+
+        .simulation {
+            width: min(
+                610px,
+                94vw
+            );
+        }
+
+        canvas {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 1.05 / 1;
+
+            cursor: crosshair;
+
+            touch-action: pan-y;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+
+        nav {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 30px;
+
+            padding-top: 10px;
+        }
+
+        nav a {
+            color: var(--gray);
+
+            font: inherit;
+
+            font-size: 12px;
+
+            letter-spacing: 0.07em;
+
+            text-decoration: none;
+
+            padding:
+                12px
+                3px;
+
+            transition:
+                color 150ms ease,
+                transform 150ms ease,
+                letter-spacing 150ms ease;
+        }
+
+        nav a:hover {
+            color: var(--black);
+
+            transform: translateY(-1px);
+
+            letter-spacing: 0.10em;
+        }
+
+
+        /* =========================================
+           MOBILE
+           ========================================= */
+
+        @media (max-width: 650px) {
+
+            .page {
+                padding:
+                    20px
+                    14px
+                    16px;
+            }
+
+            main {
+                min-height: 510px;
+            }
+
+            .socials {
+                left: 14px;
+
+                gap: 10px;
+            }
+
+            .socials a {
+                font-size: 9px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 10px;
+
+                letter-spacing: 0;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =========================================
+         HEADER
+         ========================================= -->
+
+    <header>
+
+        <span class="logo">
+            Osye
+        </span>
+
+        <span>
+            [ 2026 ]
+        </span>
+
+    </header>
+
+
+
+    <!-- =========================================
+         SOCIAL LINKS
+         ========================================= -->
+
+    <div class="socials">
+
+        <a
+            href="https://github.com/Osyeyy"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            [ GH ]
+        </a>
+
+        <a
+            href="https://huggingface.co/Osye"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            [ HF ]
+        </a>
+
+        <a
+            href="https://x.com/osyeyy"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            [ X ]
+        </a>
+
+    </div>
+
+
+
+    <!-- =========================================
+         SNAKE
+         ========================================= -->
+
+    <main>
+
+        <div class="simulation">
+
+            <canvas
+                id="snake"
+                width="900"
+                height="850"
+            ></canvas>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         NAVIGATION
+         ========================================= -->
+
+    <nav>
+
+        <a href="me.html">
+            [ ME ]
+        </a>
+
+        <a href="projects.html">
+            [ MY PROJECTS ]
+        </a>
+
+        <a href="thoughts.html">
+            [ MY THOUGHTS ]
+        </a>
+
+    </nav>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================================
+   CANVAS
+   ========================================= */
+
+
+const canvas =
+    document.querySelector(
+        "#snake"
+    );
+
+
+const ctx =
+    canvas.getContext(
+        "2d"
+    );
+
+
+const WIDTH =
+    canvas.width;
+
+
+const HEIGHT =
+    canvas.height;
+
+
+
+/* =========================================
+   RANDOM GENERATOR
+   ========================================= */
+
+
+let seed =
+    91731;
+
+
+function random() {
+
+    seed =
+        (
+            seed *
+            1664525 +
+
+            1013904223
+        ) >>> 0;
+
+
+    return (
+        seed /
+        4294967296
+    );
+
+}
+
+
+
+/* =========================================
+   PARTICLES
+   ========================================= */
+
+
+const particles =
+    [];
+
+
+const SEGMENTS =
+    64;
+
+
+const PARTICLES_PER_SEGMENT =
+    12;
+
+
+
+/*
+
+    SNAKE STRUCTURE
+
+    u = 0
+    head
+
+    u = 1
+    tail
+
+*/
+
+
+for (
+    let segment = 0;
+    segment < SEGMENTS;
+    segment++
+) {
+
+
+    const u =
+        segment /
+        (
+            SEGMENTS -
+            1
+        );
+
+
+    let radius;
+
+
+
+    /* =========================================
+       HEAD
+       ========================================= */
+
+
+    if (
+        u <
+        0.10
+    ) {
+
+        radius =
+            23 +
+            u *
+            150;
+
+    }
+
+
+
+    /* =========================================
+       BODY / TAIL
+       ========================================= */
+
+
+    else {
+
+        radius =
+
+            34 *
+
+            (
+                1 -
+
+                Math.pow(
+
+                    Math.max(
+
+                        0,
+
+                        (
+                            u -
+                            0.72
+                        ) /
+                        0.28
+
+                    ),
+
+                    1.45
+
+                ) *
+
+                0.88
+            );
+
+    }
+
+
+
+    /* =========================================
+       PARTICLES AROUND SEGMENT
+       ========================================= */
+
+
+    for (
+        let j = 0;
+        j <
+        PARTICLES_PER_SEGMENT;
+        j++
+    ) {
+
+
+        const angle =
+
+            (
+                j /
+                PARTICLES_PER_SEGMENT
+            ) *
+
+            Math.PI *
+            2 +
+
+            (
+                segment %
+                2
+            ) *
+
+            0.16;
+
+
+
+        const particleRadius =
+
+            radius *
+
+            (
+                0.32 +
+
+                0.68 *
+
+                Math.sqrt(
+                    random()
+                )
+            );
+
+
+
+        particles.push({
+
+            segment,
+
+            u,
+
+            angle,
+
+            radius:
+                particleRadius,
+
+
+            x:
+                WIDTH /
+                2,
+
+
+            y:
+                80 +
+                u *
+                690,
+
+
+            vx:
+                0,
+
+
+            vy:
+                0,
+
+
+            phase:
+
+                random() *
+
+                Math.PI *
+                2,
+
+
+            size:
+
+                0.75 +
+
+                random() *
+                1.25,
+
+
+            shade:
+                random()
+
+        });
+
+    }
+
+}
+
+
+
+/* =========================================
+   EXTRA PARTICLES FOR HEAD
+   ========================================= */
+
+
+for (
+    let i = 0;
+    i < 110;
+    i++
+) {
+
+
+    const u =
+
+        random() *
+        0.12;
+
+
+
+    const segment =
+
+        Math.floor(
+
+            u *
+
+            (
+                SEGMENTS -
+                1
+            )
+
+        );
+
+
+
+    const angle =
+
+        random() *
+
+        Math.PI *
+        2;
+
+
+
+    const radius =
+
+        (
+            26 +
+
+            u *
+            125
+        ) *
+
+        Math.sqrt(
+            random()
+        );
+
+
+
+    particles.push({
+
+        segment,
+
+        u,
+
+        angle,
+
+        radius,
+
+
+        x:
+            WIDTH /
+            2,
+
+
+        y:
+            80 +
+            u *
+            690,
+
+
+        vx:
+            0,
+
+
+        vy:
+            0,
+
+
+        phase:
+
+            random() *
+
+            Math.PI *
+            2,
+
+
+        size:
+
+            0.8 +
+
+            random() *
+            1.3,
+
+
+        shade:
+            random()
+
+    });
+
+}
+
+
+
+/* =========================================
+   POINTER
+   ========================================= */
+
+
+const pointer = {
+
+    x:
+        -9999,
+
+    y:
+        -9999,
+
+    active:
+        false,
+
+    previousX:
+        0,
+
+    previousY:
+        0,
+
+    velocityX:
+        0,
+
+    velocityY:
+        0
+
+};
+
+
+
+function updatePointer(
+    event
+) {
+
+
+    const rect =
+        canvas
+            .getBoundingClientRect();
+
+
+
+    const x =
+
+        (
+            event.clientX -
+            rect.left
+        ) *
+
+        WIDTH /
+        rect.width;
+
+
+
+    const y =
+
+        (
+            event.clientY -
+            rect.top
+        ) *
+
+        HEIGHT /
+        rect.height;
+
+
+
+    pointer.velocityX =
+
+        x -
+        pointer.previousX;
+
+
+
+    pointer.velocityY =
+
+        y -
+        pointer.previousY;
+
+
+
+    pointer.previousX =
+        x;
+
+
+    pointer.previousY =
+        y;
+
+
+
+    pointer.x =
+        x;
+
+
+    pointer.y =
+        y;
+
+
+    pointer.active =
+        true;
+
+}
+
+
+
+canvas.addEventListener(
+
+    "pointermove",
+
+    updatePointer
+
+);
+
+
+
+canvas.addEventListener(
+
+    "pointerdown",
+
+    updatePointer
+
+);
+
+
+
+canvas.addEventListener(
+
+    "pointerleave",
+
+    () => {
+
+        pointer.active =
+            false;
+
+    }
+
+);
+
+
+
+/* =========================================
+   TIME
+   ========================================= */
+
+
+let time =
+    0;
+
+
+
+/* =========================================
+   SNAKE CENTER LINE
+   ========================================= */
+
+
+function centerLine(
+    u
+) {
+
+
+    const headWeight =
+
+        1 -
+
+        Math.pow(
+
+            1 -
+            u,
+
+            4
+
+        );
+
+
+
+    const primaryWave =
+
+        Math.sin(
+
+            time *
+            1.28 -
+
+            u *
+            10.8
+
+        ) *
+
+        58 *
+
+        headWeight;
+
+
+
+    const secondaryWave =
+
+        Math.sin(
+
+            time *
+            0.72 -
+
+            u *
+            5.2 +
+
+            1.7
+
+        ) *
+
+        18 *
+
+        (
+            0.25 +
+
+            0.75 *
+            u
+        );
+
+
+
+    return {
+
+        x:
+
+            WIDTH /
+            2 +
+
+            primaryWave +
+
+            secondaryWave,
+
+
+        y:
+
+            67 +
+
+            u *
+            700 +
+
+            Math.sin(
+
+                time *
+                0.58 -
+
+                u *
+                4
+
+            ) *
+
+            5
+
+    };
+
+}
+
+
+
+/* =========================================
+   PARTICLE TARGET
+   ========================================= */
+
+
+function getTarget(
+    particle
+) {
+
+
+    const center =
+
+        centerLine(
+            particle.u
+        );
+
+
+
+    const before =
+
+        centerLine(
+
+            Math.max(
+
+                0,
+
+                particle.u -
+                0.006
+
+            )
+
+        );
+
+
+
+    const after =
+
+        centerLine(
+
+            Math.min(
+
+                1,
+
+                particle.u +
+                0.006
+
+            )
+
+        );
+
+
+
+    const dx =
+
+        after.x -
+        before.x;
+
+
+
+    const dy =
+
+        after.y -
+        before.y;
+
+
+
+    const length =
+
+        Math.hypot(
+
+            dx,
+
+            dy
+
+        ) || 1;
+
+
+
+    const normalX =
+
+        -dy /
+        length;
+
+
+
+    const normalY =
+
+        dx /
+        length;
+
+
+
+    const breathing =
+
+        1 +
+
+        Math.sin(
+
+            time *
+            1.7 +
+
+            particle.phase
+
+        ) *
+
+        0.018;
+
+
+
+    const lateral =
+
+        Math.cos(
+            particle.angle
+        ) *
+
+        particle.radius *
+
+        breathing;
+
+
+
+    const depth =
+
+        Math.sin(
+            particle.angle
+        );
+
+
+
+    return {
+
+        x:
+
+            center.x +
+
+            normalX *
+            lateral +
+
+            depth *
+            3,
+
+
+        y:
+
+            center.y +
+
+            normalY *
+            lateral *
+            0.46
+
+    };
+
+}
+
+
+
+/* =========================================
+   PHYSICS
+   ========================================= */
+
+
+function physics() {
+
+
+    time +=
+        0.016;
+
+
+
+    for (
+        const particle
+        of particles
+    ) {
+
+
+        const target =
+
+            getTarget(
+                particle
+            );
+
+
+
+        particle.vx +=
+
+            (
+                target.x -
+                particle.x
+            ) *
+
+            0.013;
+
+
+
+        particle.vy +=
+
+            (
+                target.y -
+                particle.y
+            ) *
+
+            0.013;
+
+
+
+        if (
+            pointer.active
+        ) {
+
+
+            const dx =
+
+                particle.x -
+                pointer.x;
+
+
+
+            const dy =
+
+                particle.y -
+                pointer.y;
+
+
+
+            const distance =
+
+                Math.hypot(
+
+                    dx,
+
+                    dy
+
+                ) || 1;
+
+
+
+            const RANGE =
+                132;
+
+
+
+            if (
+                distance <
+                RANGE
+            ) {
+
+
+                const influence =
+
+                    1 -
+
+                    distance /
+                    RANGE;
+
+
+
+                const pointerSpeed =
+
+                    Math.hypot(
+
+                        pointer.velocityX,
+
+                        pointer.velocityY
+
+                    );
+
+
+
+                const force =
+
+                    influence *
+
+                    influence *
+
+                    (
+                        4.1 +
+
+                        Math.min(
+
+                            5,
+
+                            pointerSpeed *
+                            0.09
+
+                        )
+                    );
+
+
+
+                particle.vx +=
+
+                    dx /
+                    distance *
+
+                    force;
+
+
+
+                particle.vy +=
+
+                    dy /
+                    distance *
+
+                    force;
+
+
+
+                particle.vx +=
+
+                    pointer.velocityX *
+
+                    influence *
+
+                    0.055;
+
+
+
+                particle.vy +=
+
+                    pointer.velocityY *
+
+                    influence *
+
+                    0.055;
+
+            }
+
+        }
+
+
+
+        particle.vx *=
+            0.946;
+
+
+        particle.vy *=
+            0.946;
+
+
+
+        particle.x +=
+            particle.vx;
+
+
+        particle.y +=
+            particle.vy;
+
+    }
+
+
+
+    pointer.velocityX *=
+        0.7;
+
+
+    pointer.velocityY *=
+        0.7;
+
+}
+
+
+
+/* =========================================
+   DRAW
+   ========================================= */
+
+
+function draw() {
+
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        WIDTH,
+
+        HEIGHT
+
+    );
+
+
+
+    for (
+        const particle
+        of particles
+    ) {
+
+
+        const speed =
+
+            Math.min(
+
+                1,
+
+                Math.hypot(
+
+                    particle.vx,
+
+                    particle.vy
+
+                ) /
+
+                4
+
+            );
+
+
+
+        const pattern =
+
+            0.5 +
+
+            0.5 *
+
+            Math.sin(
+
+                particle.u *
+                55 +
+
+                particle.angle *
+                2.1
+
+            );
+
+
+
+        const alpha =
+
+            0.24 +
+
+            pattern *
+            0.23 +
+
+            speed *
+            0.27;
+
+
+
+        ctx.beginPath();
+
+
+
+        ctx.arc(
+
+            particle.x,
+
+            particle.y,
+
+            particle.size +
+
+            speed *
+            0.55,
+
+            0,
+
+            Math.PI *
+            2
+
+        );
+
+
+
+        ctx.fillStyle =
+
+            `rgba(
+                25,
+                25,
+                24,
+                ${alpha}
+            )`;
+
+
+
+        ctx.fill();
+
+    }
+
+
+
+    /* =========================================
+       EYES
+       ========================================= */
+
+
+    const head =
+
+        centerLine(
+            0.015
+        );
+
+
+
+    const next =
+
+        centerLine(
+            0.04
+        );
+
+
+
+    const dx =
+
+        next.x -
+        head.x;
+
+
+
+    const dy =
+
+        next.y -
+        head.y;
+
+
+
+    const length =
+
+        Math.hypot(
+
+            dx,
+
+            dy
+
+        ) || 1;
+
+
+
+    const normalX =
+
+        -dy /
+        length;
+
+
+
+    const normalY =
+
+        dx /
+        length;
+
+
+
+    for (
+        const side
+        of [-1, 1]
+    ) {
+
+
+        ctx.beginPath();
+
+
+
+        ctx.arc(
+
+            head.x +
+
+            normalX *
+            side *
+            11 +
+
+            dx /
+            length *
+            3,
+
+
+            head.y +
+
+            normalY *
+            side *
+            5 +
+
+            dy /
+            length *
+            3,
+
+
+            2.3,
+
+            0,
+
+            Math.PI *
+            2
+
+        );
+
+
+
+        ctx.fillStyle =
+            "rgba(15,15,14,.82)";
+
+
+        ctx.fill();
+
+    }
+
+}
+
+
+
+/* =========================================
+   ANIMATION LOOP
+   ========================================= */
+
+
+function animate() {
+
+    physics();
+
+    draw();
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+
+animate();
+
+
+</script>
+
+
+</body>
+
+</html>
